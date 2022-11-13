@@ -1,0 +1,2090 @@
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;600&display=swap");
+:root {
+  --bg-color: rgb(20,20,20);
+  --card-color: rgb(23, 23, 23);
+  --g1: rgba(73, 48, 107, 1);
+  --g2: rgba(204, 75, 194, 1);
+  --g3: rgba(255, 188, 66, 1);
+  --purple: rgba(247, 8, 255, 0.6);
+  --redish: rgba(255, 0, 119, 0.8);
+}
+
+body {
+  background-color: black;
+  font-family: "Source Sans Pro", sans-serif;
+  background-image: url(../img/stars_starry_sky_black_184789_2400x3200.jpeg);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: 0px;
+  padding: 0px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.grilla {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: "nav" "main" "footer";
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    grid-area: main;
+  }
+  .toastify {
+    padding: 12px 20px;
+    color: #fff;
+    display: inline-block;
+    box-shadow: 0 3px 6px -1px rgba(0, 0, 0, 0.12), 0 10px 36px -4px rgba(77, 96, 232, 0.3);
+    background: var(--g2);
+    background: linear-gradient(135deg, --g1, --g2);
+    position: fixed;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    max-width: calc(90% - 20px);
+    z-index: 2147483647;
+  }
+  .tosti {
+    background: linear-gradient(135deg, var(--g3), var(--g2)) !important;
+    border-radius: 10px !important;
+    color: black !important;
+    font-size: large !important;
+    text-align: center !important;
+    width: 90vw !important;
+  }
+  .header {
+    grid-area: nav;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    background: transparent;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-top: 3rem;
+  }
+  .header .contenedorHeader {
+    margin-left: 1.3rem;
+    display: flex;
+    align-items: center;
+  }
+  .header .contenedorHeader a {
+    text-decoration: none;
+  }
+  .header .contenedorHeader .navImg {
+    width: 28vw;
+    margin: 0;
+    color: white;
+  }
+  .header .contenedorNavCarrito {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+  .header .contenedorNavCarrito .btn2 {
+    background-color: transparent;
+    color: white;
+    border: 0;
+  }
+  .header .contenedorNavCarrito .btn2 :hover {
+    color: #000000;
+  }
+  .header .contenedorNavCarrito .carrito2 {
+    border: 0px;
+    display: flex;
+    background-color: transparent;
+    padding: 17px 6px 21px 6px;
+    margin-right: 0rem;
+  }
+  .header .contenedorNavCarrito .carrito2 h4 {
+    font-size: 10vw;
+    transition: ease-out 0.3s;
+    z-index: 2;
+  }
+  .header .contenedorNavCarrito .carrito2:hover {
+    background-color: transparent;
+  }
+  .cartaGradiente {
+    cursor: pointer;
+    position: relative;
+    border-radius: 10px;
+  }
+  .cartaGradiente:hover::before {
+    background-position: 100% 100%;
+    transform: scale(1.08, 1.03);
+  }
+  .cartaGradiente:hover > .contenidoCartaGrad {
+    background-position: -10% 0%;
+  }
+  .cartaGradiente::before {
+    background: linear-gradient(130deg, transparent 0% 33%, var(--g1) 66%, var(--g2) 83.5%, var(--g3) 100%);
+    border-radius: 10px;
+    background-position: 0% 0%;
+    background-size: 300% 300%;
+    content: "";
+    height: 100%;
+    left: 0px;
+    pointer-events: none;
+    position: absolute;
+    top: 0px;
+    transition: background-position 350ms ease, transform 350ms ease;
+    width: 100%;
+    z-index: 1;
+  }
+  .contenidoCartaGrad {
+    background: radial-gradient(rgba(255, 255, 255, 0.2) 8%, transparent 8%);
+    background-position: 0% 0%;
+    background-size: 5vmin 5vmin;
+    height: 100%;
+    transition: background-position 350ms ease;
+    width: 100%;
+  }
+  .offcanvas {
+    transition: none;
+    height: auto;
+  }
+  .offcanvas a:hover {
+    color: white;
+  }
+  .offcanvas .offcanvas-header2 {
+    background-color: black;
+    padding: 1.3rem;
+  }
+  .offcanvas .btn-close-white {
+    transform: scale(1, 1);
+  }
+  .offcanvas .offcanvas-body2 {
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    justify-content: center;
+  }
+  .offcanvas .link {
+    border: 0px;
+    color: white;
+    display: block;
+    font-family: "roboto";
+    font-size: clamp(2em, 5.5vw, 7em);
+    padding: clamp(0.25em, 1vw, 1em) clamp(1em, 4vw, 4em);
+    position: relative;
+    text-decoration: none;
+  }
+  .offcanvas .link:hover::before {
+    transition: width 600ms ease;
+  }
+  .offcanvas .link:before {
+    content: "";
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 0%;
+    position: absolute;
+  }
+  .offcanvas .link:nth-child(4) {
+    border-bottom: 1.3rem solid var(--g1);
+  }
+  .offcanvas.offcanvas-top {
+    transform: none;
+  }
+  .carritoDiv {
+    grid-area: nav;
+    padding: 0 0 0 0;
+    margin: 0 0.5rem 0 0.5rem;
+  }
+  .carritoDiv .carrito {
+    border: 0px;
+    display: flex;
+    background-color: transparent;
+    padding: 7px;
+  }
+  .carritoDiv .carrito svg {
+    transition: ease-out 0.3s;
+  }
+  .carritoDiv .carrito h4 {
+    transition: ease-out 0.3s;
+    z-index: 2;
+    margin-bottom: 5.5px;
+  }
+  .carritoDiv .carrito:hover {
+    background-color: transparent;
+  }
+  .carritoDiv .carrito:hover svg {
+    color: black;
+    transition: ease-in 0.3s;
+    z-index: 1;
+  }
+  .carritoDiv .bi-cart2 {
+    fill: currentColor;
+    height: 7vw;
+  }
+  .carritoDiv .offcanvas-header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 1.5rem;
+  }
+  .carritoDiv .offcanvas-header .btn-close {
+    padding-left: 1.5rem;
+  }
+  .carritoDiv .btn-close:hover {
+    padding-left: 1.5rem;
+    transform: scale(1.3);
+  }
+  .carritoDiv .offcanvas-title {
+    margin-top: 1rem;
+  }
+  .carritoDiv .offcanvas-body {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+  }
+  .carritoDiv .offcanvas-body .boton {
+    background-color: #000000;
+    color: white;
+    transition: ease-out 0.2s;
+  }
+  .carritoDiv .offcanvas-body .boton:hover {
+    background-color: var(--g2);
+    color: black;
+    transition: ease-in 0.2s;
+  }
+  .carritoDiv .offcanvas-body .contador {
+    background-color: white;
+    color: black;
+    padding: 5px 15px 5px 15px;
+    border: 0;
+    margin: 0 4px;
+    border-radius: 10px;
+  }
+  .carritoDiv .offcanvas-body .juegosCarrito {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+  .carritoDiv .offcanvas-body .card2 {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin-top: 3rem;
+    background-color: #000000;
+    border: 8px solid rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    width: 75%;
+    height: 100%;
+  }
+  .carritoDiv .offcanvas-body .card2 img {
+    border-radius: 5px;
+  }
+  .carritoDiv .offcanvas-body .card-body2 {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+  .carritoDiv .offcanvas-body .card-body2 .card-title2 {
+    color: white;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    line-height: 2;
+  }
+  .carritoDiv .offcanvas-body .card-body2 .card-text2 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+  .carritoDiv .offcanvas-body .card-body2 .card-text3 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+  .carritoDiv .offcanvas-body .card-body2 .boton2 {
+    margin-bottom: 1rem;
+  }
+  .carritoDiv .offcanvas-body .card-body2 .boton2:hover {
+    background-color: black;
+  }
+  .centrador {
+    grid-area: main;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  .content {
+    display: none;
+    background: transparent;
+    width: 70%;
+    box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
+    position: relative;
+  }
+  .content2 {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+    width: 70%;
+    box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
+    position: relative;
+    margin-top: 1rem;
+  }
+  .search {
+    --size: 50px;
+    background-color: transparent;
+    display: flex;
+    overflow: hidden;
+    font-size: 1.25em;
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    -webkit-transition: all 0.3s cubic-bezier(0.76, 0.25, 0.14, 0.53);
+    transition: all 0.3s cubic-bezier(0.76, 0.25, 0.14, 0.53);
+    padding: 3px;
+  }
+  .search svg {
+    color: white;
+    height: 1.3rem;
+  }
+  .search::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 100px;
+    border: 2.5px solid transparent;
+    background: linear-gradient(90deg, rgb(131, 58, 180) 0%, rgb(253, 29, 29) 50%, rgb(252, 176, 69) 100%) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    mask: trans;
+  }
+  .search__input {
+    color: white;
+    border: 0;
+    padding: 0.25em 1em;
+    flex-grow: 1;
+    outline: 0;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .search__submit {
+    font-size: 0rem;
+    margin-left: auto;
+    background: 0;
+    border: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 200ms ease-out;
+    width: calc(var(--size) - 10px);
+    color: white;
+  }
+  ::placeholder {
+    color: white;
+  }
+  .search:focus-within {
+    width: 100%;
+  }
+  .search:focus-within .search__input {
+    opacity: 1;
+    z-index: initial;
+    cursor: initial;
+    width: calc(100% - var(--size));
+  }
+  .search:focus-within .search__submit {
+    background: transparent;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+  .search:focus-within .search__submit:hover, .search:focus-within .search__submit:focus {
+    outline: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
+  }
+  .main {
+    grid-area: main;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  .main3 {
+    background: linear-gradient(180deg, rgb(3, 3, 3) 0%, rgb(0, 0, 0) 100%);
+    overflow: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    color: black;
+    margin-top: 6rem;
+    gap: 1rem;
+    height: 30em;
+    width: 85%;
+    animation: inAnim 200ms linear 0s 1 normal forwards;
+  }
+  .main3 li {
+    color: white;
+    font-size: 2em;
+    list-style-type: none;
+    margin-top: 11rem;
+  }
+  @keyframes inAnim {
+    0% {
+      transform: scale(0);
+      transform-origin: 50% 0%;
+    }
+    100% {
+      transform: scale(1);
+      transform-origin: 50% 0%;
+    }
+  }
+  .main3Hidden {
+    background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgb(20, 20, 20) 100%);
+    overflow: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    color: black;
+    margin-top: 1rem;
+    gap: 1rem;
+    height: 30em;
+    width: 85%;
+    display: none;
+  }
+  .contenedor {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10rem;
+  }
+  .contenedor img {
+    width: 45vw;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  .contenedor .cardsBuscador {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: flex-start;
+    position: relative;
+    text-align: center;
+    color: black;
+    margin-top: 1rem;
+    gap: 1rem;
+    height: 25em;
+  }
+  .contenedor .cardsBuscador .card-body3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 48vw;
+    height: 45%;
+    transition: ease-out 0.5s;
+  }
+  .contenedor .cardsBuscador .card-title3 {
+    color: white;
+    font-size: x-large;
+    text-align: center;
+    line-height: 2;
+    width: 90vw;
+  }
+  .contenedor .cardsBuscador .card-text3 {
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bolder;
+  }
+  .contenedor .cardsBuscador .button-28 {
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid whitesmoke;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: whitesmoke;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 1.4em;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 50px;
+    min-width: 0;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    width: 90%;
+    will-change: transform;
+  }
+  .contenedor .cardsBuscador .button-28:hover {
+    color: black;
+    background-color: whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  }
+  #cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 6rem;
+    gap: 10px;
+    max-width: 100%;
+    justify-content: center;
+    width: calc(100% - 10px);
+  }
+  #cards:hover > .card > .card-border {
+    opacity: 1;
+  }
+  .card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    height: 320px;
+    position: relative;
+    width: 250px;
+  }
+  .card:hover::before {
+    opacity: 1;
+  }
+  .card::before,
+  .card > .card-border {
+    border-radius: inherit;
+    height: 100%;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    transition: opacity 500ms;
+    width: 100%;
+  }
+  .card::before {
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
+    z-index: 3;
+  }
+  .card > .card-border {
+    background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.3), transparent 40%);
+    z-index: 1;
+  }
+  .card > .card-content {
+    background-color: var(--card-color);
+    border-radius: inherit;
+    position: absolute;
+    inset: 1px;
+    z-index: 2;
+  }
+  .juegosCarrito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card-content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  .card-content .card-title {
+    color: white;
+    font-size: larger;
+    line-height: 2;
+  }
+  .card-content .card-text {
+    color: white;
+    font-size: x-large;
+  }
+  .card-content .imgProductos {
+    height: 100%;
+    object-fit: fill;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .card-content .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    filter: opacity(0%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 9.7px;
+    width: 100%;
+    height: 100%;
+    transition: ease-out 0.5s;
+  }
+  .card-content .card-body:hover {
+    filter: opacity(100%);
+    transition: ease-in 0.5s;
+  }
+  .colorBoton {
+    color: black;
+    background-color: white;
+    font-weight: bold;
+    transition: ease-out 0.2s;
+  }
+  .colorBoton:hover {
+    background-color: rgba(32, 30, 30, 0.5);
+    color: white;
+    transition: ease-in 0.2s;
+  }
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 500;
+    line-height: 0;
+  }
+  footer {
+    grid-area: footer;
+    margin-top: 4rem;
+    padding-bottom: 3rem;
+    background: transparent;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  footer img {
+    margin: 2rem 0 2rem 0;
+    width: 25vw;
+  }
+  footer .containerFooter {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+  footer li {
+    margin-left: 3rem;
+    list-style-type: none;
+  }
+  footer .gradient-text {
+    background-color: #CA4246;
+    background-image: linear-gradient(45deg, #CA4246 16.666%, #E16541 16.666%, #E16541 33.333%, #F18F43 33.333%, #F18F43 50%, #8B9862 50%, #8B9862 66.666%, #476098 66.666%, #476098 83.333%, #A7489B 83.333%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+  }
+  footer .gradient-text:hover {
+    animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+  }
+  @keyframes rainbow-text-simple-animation-rev {
+    0% {
+      background-size: 650%;
+    }
+    40% {
+      background-size: 650%;
+    }
+    100% {
+      background-size: 100%;
+    }
+  }
+  @keyframes rainbow-text-simple-animation {
+    0% {
+      background-size: 100%;
+    }
+    80% {
+      background-size: 650%;
+    }
+    100% {
+      background-size: 650%;
+    }
+  }
+  footer p {
+    color: white;
+  }
+}
+@media screen and (min-width: 600px) {
+  main {
+    grid-area: main;
+  }
+  .toastify {
+    padding: 12px 20px;
+    color: #fff;
+    display: inline-block;
+    box-shadow: 0 3px 6px -1px rgba(0, 0, 0, 0.12), 0 10px 36px -4px rgba(77, 96, 232, 0.3);
+    background: var(--g2);
+    background: linear-gradient(135deg, --g1, --g2);
+    position: fixed;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    max-width: calc(50% - 20px);
+    z-index: 2147483647;
+  }
+  .tosti {
+    background: linear-gradient(135deg, var(--g3), var(--g2)) !important;
+    border-radius: 10px !important;
+    color: black !important;
+    font-size: large !important;
+    text-align: center !important;
+    width: 35vw !important;
+  }
+  .header {
+    grid-area: nav;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    background: transparent;
+    gap: 2rem;
+    padding-top: 3rem;
+  }
+  .header .contenedorHeader {
+    margin-left: 1.3rem;
+    display: flex;
+    align-items: center;
+  }
+  .header .contenedorHeader a {
+    text-decoration: none;
+  }
+  .header .contenedorHeader .navImg {
+    width: 18vw;
+    margin: 0;
+    color: white;
+  }
+  .header *, .header *::before, .header *::after {
+    box-sizing: border-box;
+  }
+  .header .content {
+    background: transparent;
+    width: 70%;
+    box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
+    position: relative;
+  }
+  .header .search {
+    --size: 60px;
+    background-color: transparent;
+    display: flex;
+    overflow: hidden;
+    font-size: 1.25em;
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    -webkit-transition: all 0.3s cubic-bezier(0.76, 0.25, 0.14, 0.53);
+    transition: all 0.3s cubic-bezier(0.76, 0.25, 0.14, 0.53);
+    padding: 3px;
+  }
+  .header .search svg {
+    color: white;
+    height: 1.3rem;
+    margin-right: 2px;
+  }
+  .header .search::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 100px;
+    border: 2.5px solid transparent;
+    background: linear-gradient(90deg, rgb(131, 58, 180) 0%, rgb(253, 29, 29) 50%, rgb(252, 176, 69) 100%) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    mask: trans;
+  }
+  .header .search__input {
+    color: white;
+    border: 0;
+    padding: 0.25em 1em;
+    flex-grow: 1;
+    outline: 0;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .header .search__submit {
+    font-size: 1.5rem;
+    margin-left: auto;
+    background: 0;
+    border: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 200ms ease-out;
+    width: calc(var(--size) - 10px);
+    height: calc(var(--size) - 10px);
+    color: white;
+  }
+  .header ::placeholder {
+    color: white;
+  }
+  .header .search:focus-within {
+    width: 100%;
+  }
+  .header .search:focus-within .search__input {
+    opacity: 1;
+    z-index: initial;
+    cursor: initial;
+    width: calc(100% - var(--size));
+  }
+  .header .search:focus-within .search__submit {
+    background: transparent;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+  .header .search:focus-within .search__submit:hover, .header .search:focus-within .search__submit:focus {
+    outline: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
+  }
+  .header .baton {
+    margin: 0;
+  }
+  .header .contenedorNavCarrito {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+  .header .contenedorNavCarrito .btn2 {
+    background-color: transparent;
+    color: white;
+    border: 0;
+  }
+  .header .contenedorNavCarrito .btn2 :hover {
+    color: #000000;
+  }
+  .header .contenedorNavCarrito .carrito2 {
+    border: 0px;
+    display: flex;
+    background-color: transparent;
+    padding: 17px 6px 21px 6px;
+    margin-right: 0rem;
+  }
+  .header .contenedorNavCarrito .carrito2 h4 {
+    font-size: 5vw;
+    transition: ease-out 0.3s;
+    z-index: 2;
+  }
+  .header .contenedorNavCarrito .carrito2:hover {
+    background-color: transparent;
+  }
+  .cartaGradiente {
+    cursor: pointer;
+    position: relative;
+    border-radius: 10px;
+  }
+  .cartaGradiente:hover::before {
+    background-position: 100% 100%;
+    transform: scale(1.08, 1.03);
+  }
+  .cartaGradiente:hover > .contenidoCartaGrad {
+    background-position: -10% 0%;
+  }
+  .cartaGradiente::before {
+    background: linear-gradient(130deg, transparent 0% 33%, var(--g1) 66%, var(--g2) 83.5%, var(--g3) 100%);
+    border-radius: 10px;
+    background-position: 0% 0%;
+    background-size: 300% 300%;
+    content: "";
+    height: 100%;
+    left: 0px;
+    pointer-events: none;
+    position: absolute;
+    top: 0px;
+    transition: background-position 350ms ease, transform 350ms ease;
+    width: 100%;
+    z-index: 1;
+  }
+  .contenidoCartaGrad {
+    background: radial-gradient(rgba(255, 255, 255, 0.2) 8%, transparent 8%);
+    background-position: 0% 0%;
+    background-size: 5vmin 5vmin;
+    height: 100%;
+    transition: background-position 350ms ease;
+    width: 100%;
+  }
+  .offcanvas {
+    transition: none;
+    height: auto;
+  }
+  .offcanvas a:hover {
+    color: white;
+  }
+  .offcanvas .offcanvas-header2 {
+    background-color: black;
+    padding: 1.3rem;
+  }
+  .offcanvas .btn-close-white {
+    transform: scale(1, 1);
+  }
+  .offcanvas .offcanvas-body2 {
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    justify-content: center;
+  }
+  .offcanvas .link {
+    border: 0px;
+    color: white;
+    display: block;
+    font-family: "roboto";
+    font-size: clamp(2em, 5.5vw, 7em);
+    padding: clamp(0.25em, 1vw, 1em) clamp(1em, 4vw, 4em);
+    position: relative;
+    text-decoration: none;
+  }
+  .offcanvas .link:hover::before {
+    transition: width 600ms ease;
+  }
+  .offcanvas .link:before {
+    content: "";
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 0%;
+    position: absolute;
+  }
+  .offcanvas .link:nth-child(4) {
+    border-bottom: 1.3rem solid var(--g1);
+  }
+  .offcanvas.offcanvas-top {
+    transform: none;
+  }
+  .carritoDiv {
+    grid-area: nav;
+    padding: 0 0 0 0;
+    margin: 0 3rem 0 0;
+  }
+  .carritoDiv .carrito {
+    border: 0px;
+    display: flex;
+    background-color: transparent;
+    padding: 7px;
+  }
+  .carritoDiv .carrito svg {
+    transition: ease-out 0.3s;
+  }
+  .carritoDiv .carrito h4 {
+    transition: ease-out 0.3s;
+    z-index: 2;
+    margin-bottom: 5.5px;
+  }
+  .carritoDiv .carrito:hover {
+    background-color: transparent;
+  }
+  .carritoDiv .carrito:hover svg {
+    color: black;
+    transition: ease-in 0.3s;
+    z-index: 1;
+  }
+  .carritoDiv .bi-cart2 {
+    fill: currentColor;
+    height: 5vw;
+  }
+  .carritoDiv .offcanvas-header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 1.5rem;
+  }
+  .carritoDiv .offcanvas-header .btn-close {
+    padding-left: 1.5rem;
+  }
+  .carritoDiv .btn-close:hover {
+    padding-left: 1.5rem;
+    transform: scale(1.3);
+  }
+  .carritoDiv .offcanvas-title {
+    margin-top: 1rem;
+  }
+  .carritoDiv .offcanvas-body {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+  }
+  .carritoDiv .offcanvas-body .boton {
+    background-color: #000000;
+    color: white;
+    transition: ease-out 0.2s;
+  }
+  .carritoDiv .offcanvas-body .boton:hover {
+    background-color: var(--g2);
+    color: black;
+    transition: ease-in 0.2s;
+  }
+  .carritoDiv .offcanvas-body .contador {
+    background-color: white;
+    color: black;
+    padding: 5px 15px 5px 15px;
+    border: 0;
+    margin: 0 4px;
+    border-radius: 10px;
+  }
+  .carritoDiv .offcanvas-body .juegosCarrito {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+  .carritoDiv .offcanvas-body .card2 {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin-top: 3rem;
+    background-color: #000000;
+    border: 8px solid rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    width: 75%;
+    height: 100%;
+  }
+  .carritoDiv .offcanvas-body .card2 img {
+    border-radius: 5px;
+  }
+  .carritoDiv .offcanvas-body .card-body2 {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+  .carritoDiv .offcanvas-body .card-body2 .card-title2 {
+    color: white;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    line-height: 2;
+  }
+  .carritoDiv .offcanvas-body .card-body2 .card-text2 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+  .carritoDiv .offcanvas-body .card-body2 .card-text3 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+  .carritoDiv .offcanvas-body .card-body2 .boton2 {
+    margin-bottom: 1rem;
+  }
+  .carritoDiv .offcanvas-body .card-body2 .boton2:hover {
+    background-color: black;
+  }
+  .content2 {
+    display: none;
+  }
+  .main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  .main3 {
+    background: linear-gradient(180deg, rgb(3, 3, 3) 0%, rgb(0, 0, 0) 100%);
+    overflow: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    color: black;
+    margin-top: 1rem;
+    gap: 1rem;
+    height: 28em;
+    width: 85%;
+    animation: inAnim 200ms linear 0s 1 normal forwards;
+  }
+  .main3 li {
+    color: white;
+    font-size: 2em;
+    list-style-type: none;
+    margin-top: 11rem;
+  }
+  @keyframes inAnim {
+    0% {
+      transform: scale(0);
+      transform-origin: 50% 0%;
+    }
+    100% {
+      transform: scale(1);
+      transform-origin: 50% 0%;
+    }
+  }
+  .main3Hidden {
+    background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgb(20, 20, 20) 100%);
+    overflow: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    color: black;
+    margin-top: 1rem;
+    gap: 1rem;
+    height: 28em;
+    width: 85%;
+    display: none;
+  }
+  .contenedor {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10rem;
+  }
+  .contenedor img {
+    height: 80%;
+    width: auto;
+    border-radius: 10px;
+  }
+  .contenedor .cardsBuscador {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    text-align: center;
+    color: black;
+    margin-top: 1rem;
+    height: 25em;
+  }
+  .contenedor .cardsBuscador .card-body3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+    transition: ease-out 0.5s;
+  }
+  .contenedor .cardsBuscador .card-title3 {
+    color: white;
+    font-size: x-large;
+    text-align: center;
+    line-height: 2;
+  }
+  .contenedor .cardsBuscador .card-text3 {
+    color: white;
+    text-align: center;
+    font-size: 3em;
+    font-weight: bolder;
+  }
+  .contenedor .cardsBuscador .button-28 {
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid whitesmoke;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: whitesmoke;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 1.4em;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 60px;
+    min-width: 0;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    width: 90%;
+    will-change: transform;
+  }
+  .contenedor .cardsBuscador .button-28:hover {
+    color: black;
+    background-color: whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  }
+  #cards {
+    grid-area: main;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    gap: 10px;
+    max-width: 100%;
+    justify-content: center;
+    width: calc(100% - 10px);
+  }
+  #cards:hover > .card > .card-border {
+    opacity: 1;
+  }
+  .card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    height: 320px;
+    position: relative;
+    width: 250px;
+  }
+  .card:hover::before {
+    opacity: 1;
+  }
+  .card::before,
+  .card > .card-border {
+    border-radius: inherit;
+    height: 100%;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    transition: opacity 500ms;
+    width: 100%;
+  }
+  .card::before {
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
+    z-index: 3;
+  }
+  .card > .card-border {
+    background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.3), transparent 40%);
+    z-index: 1;
+  }
+  .card > .card-content {
+    background-color: var(--card-color);
+    border-radius: inherit;
+    position: absolute;
+    inset: 1px;
+    z-index: 2;
+  }
+  .juegosCarrito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card-content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  .card-content .card-title {
+    color: white;
+    font-size: larger;
+    line-height: 2;
+  }
+  .card-content .card-text {
+    color: white;
+    font-size: x-large;
+  }
+  .card-content .imgProductos {
+    height: 100%;
+    object-fit: fill;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .card-content .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    filter: opacity(0%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 9.7px;
+    width: 100%;
+    height: 100%;
+    transition: ease-out 0.5s;
+  }
+  .card-content .card-body:hover {
+    filter: opacity(100%);
+    transition: ease-in 0.5s;
+  }
+  .colorBoton {
+    color: black;
+    background-color: white;
+    font-weight: bold;
+    transition: ease-out 0.2s;
+  }
+  .colorBoton:hover {
+    background-color: rgba(32, 30, 30, 0.5);
+    color: white;
+    transition: ease-in 0.2s;
+  }
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 500;
+    line-height: 0;
+  }
+  footer {
+    grid-area: footer;
+    margin-top: 4rem;
+    padding-bottom: 3rem;
+    background: transparent;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  footer img {
+    margin: 2rem 0 2rem 2rem;
+    width: 15vw;
+  }
+  footer .containerFooter {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+  footer li {
+    margin-left: 3rem;
+    list-style-type: none;
+  }
+  footer .gradient-text {
+    font-size: larger;
+    background-color: #CA4246;
+    background-image: linear-gradient(45deg, #CA4246 16.666%, #E16541 16.666%, #E16541 33.333%, #F18F43 33.333%, #F18F43 50%, #8B9862 50%, #8B9862 66.666%, #476098 66.666%, #476098 83.333%, #A7489B 83.333%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+  }
+  footer .gradient-text:hover {
+    animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+  }
+  @keyframes rainbow-text-simple-animation-rev {
+    0% {
+      background-size: 650%;
+    }
+    40% {
+      background-size: 650%;
+    }
+    100% {
+      background-size: 100%;
+    }
+  }
+  @keyframes rainbow-text-simple-animation {
+    0% {
+      background-size: 100%;
+    }
+    80% {
+      background-size: 650%;
+    }
+    100% {
+      background-size: 650%;
+    }
+  }
+  footer p {
+    color: white;
+    margin: 0 5rem 0 5rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  main {
+    grid-area: main;
+  }
+  .toastify {
+    padding: 12px 20px;
+    color: #fff;
+    display: inline-block;
+    box-shadow: 0 3px 6px -1px rgba(0, 0, 0, 0.12), 0 10px 36px -4px rgba(77, 96, 232, 0.3);
+    background: var(--g2);
+    background: linear-gradient(135deg, --g1, --g2);
+    position: fixed;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    max-width: calc(50% - 20px);
+    z-index: 2147483647;
+  }
+  .tosti {
+    background: linear-gradient(135deg, var(--g3), var(--g2)) !important;
+    border-radius: 10px !important;
+    color: black !important;
+    font-size: larger !important;
+    text-align: center !important;
+    width: 25vw !important;
+  }
+  .header {
+    grid-area: nav;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    background: transparent;
+    gap: 2rem;
+    padding-top: 3rem;
+  }
+  .header .contenedorHeader {
+    margin-left: 1.3rem;
+    display: flex;
+    align-items: center;
+  }
+  .header .contenedorHeader a {
+    text-decoration: none;
+  }
+  .header .contenedorHeader .navImg {
+    width: 10vw;
+    margin: 0 2rem 0 4rem;
+    color: white;
+  }
+  .header *, .header *::before, .header *::after {
+    box-sizing: border-box;
+  }
+  .header .content {
+    background: transparent;
+    width: 70%;
+    box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
+    position: relative;
+  }
+  .header .search {
+    --size: 60px;
+    background-color: transparent;
+    display: flex;
+    overflow: hidden;
+    font-size: 1.25em;
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    -webkit-transition: all 0.3s cubic-bezier(0.76, 0.25, 0.14, 0.53);
+    transition: all 0.3s cubic-bezier(0.76, 0.25, 0.14, 0.53);
+    padding: 3px;
+  }
+  .header .search svg {
+    color: white;
+    height: 1.3rem;
+    margin-right: 2px;
+  }
+  .header .search::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 100px;
+    border: 2.5px solid transparent;
+    background: linear-gradient(90deg, rgb(131, 58, 180) 0%, rgb(253, 29, 29) 50%, rgb(252, 176, 69) 100%) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    mask: trans;
+  }
+  .header .search__input {
+    color: white;
+    border: 0;
+    padding: 0.25em 1em;
+    flex-grow: 1;
+    outline: 0;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .header .search__submit {
+    font-size: 1.5rem;
+    margin-left: auto;
+    background: 0;
+    border: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 200ms ease-out;
+    width: calc(var(--size) - 10px);
+    height: calc(var(--size) - 10px);
+    color: white;
+  }
+  .header ::placeholder {
+    color: white;
+  }
+  .header .search:focus-within {
+    width: 100%;
+  }
+  .header .search:focus-within .search__input {
+    opacity: 1;
+    z-index: initial;
+    cursor: initial;
+    width: calc(100% - var(--size));
+  }
+  .header .search:focus-within .search__submit {
+    background: transparent;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+  .header .search:focus-within .search__submit:hover, .header .search:focus-within .search__submit:focus {
+    outline: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
+  }
+  .header .contenedorNavCarrito {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+  .header .contenedorNavCarrito .btn2 {
+    background-color: transparent;
+    color: white;
+    border: 0;
+  }
+  .header .contenedorNavCarrito .btn2 :hover {
+    color: #000000;
+  }
+  .header .contenedorNavCarrito .carrito2 {
+    border: 0px;
+    display: flex;
+    background-color: transparent;
+    padding: 20px 6px 30px 6px;
+    margin-right: 2rem;
+  }
+  .header .contenedorNavCarrito .carrito2 h4 {
+    font-size: 3vw;
+    transition: ease-out 0.3s;
+    z-index: 2;
+  }
+  .header .contenedorNavCarrito .carrito2:hover {
+    background-color: transparent;
+  }
+  .cartaGradiente {
+    cursor: pointer;
+    position: relative;
+    border-radius: 10px;
+  }
+  .cartaGradiente:hover::before {
+    background-position: 100% 100%;
+    transform: scale(1.08, 1.03);
+  }
+  .cartaGradiente:hover > .contenidoCartaGrad {
+    background-position: -10% 0%;
+  }
+  .cartaGradiente::before {
+    background: linear-gradient(130deg, transparent 0% 33%, var(--g1) 66%, var(--g2) 83.5%, var(--g3) 100%);
+    border-radius: 10px;
+    background-position: 0% 0%;
+    background-size: 300% 300%;
+    content: "";
+    height: 100%;
+    left: 0px;
+    pointer-events: none;
+    position: absolute;
+    top: 0px;
+    transition: background-position 350ms ease, transform 350ms ease;
+    width: 100%;
+    z-index: 1;
+  }
+  .contenidoCartaGrad {
+    background: radial-gradient(rgba(255, 255, 255, 0.2) 8%, transparent 8%);
+    background-position: 0% 0%;
+    background-size: 5vmin 5vmin;
+    height: 100%;
+    transition: background-position 350ms ease;
+    width: 100%;
+  }
+  .offcanvas {
+    transition: none;
+    height: auto;
+  }
+  .offcanvas a:hover {
+    color: white;
+  }
+  .offcanvas .offcanvas-header2 {
+    background-color: black;
+    padding: 1.3rem;
+  }
+  .offcanvas .btn-close-white {
+    transform: scale(1, 1);
+  }
+  .offcanvas .offcanvas-body2 {
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+  }
+  .offcanvas .link {
+    border: 0px;
+    color: white;
+    display: block;
+    font-family: "roboto";
+    font-size: clamp(2em, 5.5vw, 7em);
+    padding: clamp(0.25em, 1vw, 1em) clamp(1em, 4vw, 4em);
+    position: relative;
+    text-decoration: none;
+  }
+  .offcanvas .link:hover::before {
+    transition: width 600ms ease;
+    width: 100%;
+  }
+  .offcanvas .link:before {
+    background: linear-gradient(to right, transparent, var(--purple) var(--redish-percent), var(--redish));
+    content: "";
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 0%;
+    position: absolute;
+  }
+  .offcanvas .link:nth-child(4) {
+    border-bottom: 1.3rem solid var(--g1);
+  }
+  .offcanvas.offcanvas-top {
+    transform: none;
+  }
+  .carritoDiv {
+    grid-area: nav;
+    padding: 0 0 0 0;
+    margin: 0 3rem 0 0;
+  }
+  .carritoDiv .carrito {
+    border: 0px;
+    display: flex;
+    background-color: transparent;
+    padding: 7px;
+  }
+  .carritoDiv .carrito svg {
+    transition: ease-out 0.3s;
+  }
+  .carritoDiv .carrito h4 {
+    transition: ease-out 0.3s;
+    z-index: 2;
+    margin-bottom: 5.5px;
+  }
+  .carritoDiv .carrito:hover {
+    background-color: transparent;
+  }
+  .carritoDiv .carrito:hover svg {
+    color: black;
+    transition: ease-in 0.3s;
+    z-index: 1;
+  }
+  .carritoDiv .bi-cart2 {
+    fill: currentColor;
+    height: 3vw;
+  }
+  .carritoDiv .offcanvas-header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 1.5rem;
+  }
+  .carritoDiv .offcanvas-header .btn-close {
+    padding-left: 1.5rem;
+  }
+  .carritoDiv .btn-close:hover {
+    padding-left: 1.5rem;
+    transform: scale(1.3);
+  }
+  .carritoDiv .offcanvas-title {
+    margin-top: 2rem;
+    font-weight: 600;
+  }
+  .carritoDiv .h2carrito {
+    font-weight: bold;
+  }
+  .carritoDiv .offcanvas-body {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+  }
+  .carritoDiv .offcanvas-body .boton {
+    background-color: #000000;
+    color: white;
+    transition: ease-out 0.2s;
+  }
+  .carritoDiv .offcanvas-body .boton:hover {
+    background-color: rgb(224, 0, 0);
+    color: black;
+    transition: ease-in 0.2s;
+  }
+  .carritoDiv .offcanvas-body .contador {
+    background-color: #000000;
+    color: white;
+    border: 0;
+    border-radius: 10px;
+    padding: 1px 10px 1px 10px;
+  }
+  .carritoDiv .offcanvas-body .contador:hover {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    padding: 1px 10px 1px 10px;
+  }
+  .carritoDiv .offcanvas-body .juegosCarrito {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+  .carritoDiv .offcanvas-body .card2 {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin-top: 3rem;
+    background-color: #000000;
+    border: 8px solid rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    width: 75%;
+    height: 100%;
+  }
+  .carritoDiv .offcanvas-body .card2 img {
+    border-radius: 5px;
+  }
+  .carritoDiv .offcanvas-body .card-body2 {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+  .carritoDiv .offcanvas-body .card-body2 .card-title2 {
+    color: white;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    line-height: 2;
+  }
+  .carritoDiv .offcanvas-body .card-body2 .card-text2 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+  .carritoDiv .offcanvas-body .card-body2 .card-text3 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+  .carritoDiv .offcanvas-body .card-body2 .boton2 {
+    margin-bottom: 1rem;
+  }
+  .carritoDiv .offcanvas-body .card-body2 .boton2:hover {
+    background-color: rgb(224, 0, 0);
+  }
+  .content2 {
+    display: none;
+  }
+  .main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  .main3 {
+    background: linear-gradient(180deg, rgb(3, 3, 3) 0%, rgb(0, 0, 0) 100%);
+    overflow: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    color: black;
+    margin-top: 1rem;
+    gap: 1rem;
+    height: 28em;
+    width: 85%;
+    animation: inAnim 200ms linear 0s 1 normal forwards;
+  }
+  .main3 li {
+    color: white;
+    font-size: 2em;
+    list-style-type: none;
+    margin-top: 11rem;
+  }
+  @keyframes inAnim {
+    0% {
+      transform: scale(0);
+      transform-origin: 50% 0%;
+    }
+    100% {
+      transform: scale(1);
+      transform-origin: 50% 0%;
+    }
+  }
+  .main3Hidden {
+    background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgb(20, 20, 20) 100%);
+    overflow: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    color: black;
+    margin-top: 1rem;
+    gap: 1rem;
+    height: 28em;
+    width: 85%;
+    display: none;
+  }
+  .contenedor {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10rem;
+  }
+  .contenedor img {
+    width: 21vw;
+    height: auto;
+    border-radius: 10px;
+  }
+  .contenedor .cardsBuscador {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    text-align: center;
+    color: black;
+    margin-top: 1rem;
+    gap: 1rem;
+    height: 25em;
+  }
+  .contenedor .cardsBuscador .card-body3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 4rem;
+    width: 70%;
+    height: 100%;
+    transition: ease-out 0.5s;
+  }
+  .contenedor .cardsBuscador .card-title3 {
+    color: white;
+    font-size: x-large;
+    text-align: center;
+    line-height: 2;
+  }
+  .contenedor .cardsBuscador .card-text3 {
+    color: white;
+    text-align: center;
+    font-size: 3em;
+    font-weight: bolder;
+  }
+  .contenedor .cardsBuscador .button-28 {
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid whitesmoke;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: whitesmoke;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 1.4em;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 60px;
+    min-width: 0;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    width: 90%;
+    will-change: transform;
+  }
+  .contenedor .cardsBuscador .button-28:hover {
+    color: black;
+    background-color: whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  }
+  #cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    gap: 10px;
+    max-width: 100%;
+    justify-content: center;
+    width: calc(100% - 10px);
+  }
+  #cards:hover > .card > .card-border {
+    opacity: 1;
+  }
+  .card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    height: 320px;
+    position: relative;
+    width: 250px;
+  }
+  .card:hover::before {
+    opacity: 1;
+  }
+  .card::before,
+  .card > .card-border {
+    border-radius: inherit;
+    height: 100%;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    transition: opacity 500ms;
+    width: 100%;
+  }
+  .card::before {
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
+    z-index: 3;
+  }
+  .card > .card-border {
+    background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.3), transparent 40%);
+    z-index: 1;
+  }
+  .card > .card-content {
+    background-color: var(--card-color);
+    border-radius: inherit;
+    position: absolute;
+    inset: 1px;
+    z-index: 2;
+  }
+  .juegosCarrito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card-content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  .card-content .card-title {
+    color: white;
+    font-size: larger;
+    line-height: 2;
+  }
+  .card-content .card-text {
+    color: white;
+    font-size: x-large;
+  }
+  .card-content .imgProductos {
+    height: 100%;
+    object-fit: fill;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .card-content .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    filter: opacity(0%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 9.7px;
+    width: 100%;
+    height: 100%;
+    transition: ease-out 0.5s;
+  }
+  .card-content .card-body:hover {
+    filter: opacity(100%);
+    transition: ease-in 0.5s;
+  }
+  .colorBoton {
+    color: black;
+    background-color: white;
+    font-weight: bold;
+    transition: ease-out 0.2s;
+  }
+  .colorBoton:hover {
+    background-color: rgba(32, 30, 30, 0.5);
+    color: white;
+    transition: ease-in 0.2s;
+  }
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 500;
+    line-height: 0;
+  }
+  footer {
+    grid-area: footer;
+    margin-top: 4rem;
+    padding-bottom: 3rem;
+    background: transparent;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer img {
+    margin: 2rem 0 2rem 5rem;
+    width: 10vw;
+  }
+  footer .containerFooter {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+  footer li {
+    margin-left: 3rem;
+    list-style-type: none;
+  }
+  footer .gradient-text {
+    background-color: #CA4246;
+    background-image: linear-gradient(45deg, #CA4246 16.666%, #E16541 16.666%, #E16541 33.333%, #F18F43 33.333%, #F18F43 50%, #8B9862 50%, #8B9862 66.666%, #476098 66.666%, #476098 83.333%, #A7489B 83.333%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+  }
+  footer .gradient-text:hover {
+    animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+  }
+  @keyframes rainbow-text-simple-animation-rev {
+    0% {
+      background-size: 650%;
+    }
+    40% {
+      background-size: 650%;
+    }
+    100% {
+      background-size: 100%;
+    }
+  }
+  @keyframes rainbow-text-simple-animation {
+    0% {
+      background-size: 100%;
+    }
+    80% {
+      background-size: 650%;
+    }
+    100% {
+      background-size: 650%;
+    }
+  }
+  footer p {
+    color: white;
+    margin-right: 5rem;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

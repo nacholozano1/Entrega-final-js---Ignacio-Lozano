@@ -1,0 +1,22 @@
+[
+    {"id":1, "juego":"Elden Ring", "precio":4999, "img":"img/juegos/elden-ring.jpg"},
+    {"id":2, "juego":"Call of Duty: Modern Warefare 2", "precio":7999, "img":"img/juegos/modern-warfare-2.jpg"},
+    {"id":3, "juego":"FIFA 23", "precio":7999, "img":"img/juegos/fifa-23.jpg"},
+    {"id":4, "juego":"Lego Star Wars: The Skywalker Saga", "precio":6999, "img":"img/juegos/lego_star_wars.jpg"},
+    {"id":5, "juego":"2K22", "precio":3999, "img":"img/juegos/2k.jpg"},
+    {"id":6, "juego":"Fallout 4", "precio":2999, "img":"img/juegos/fallout-4.jpg"},
+    {"id":7, "juego":"Farming Simulator 15", "precio":1999, "img":"img/juegos/farming-15.jpg"},
+    {"id":8, "juego":"FIFA 22", "precio":4999, "img":"img/juegos/fifa-22.jpg"},
+    {"id":9, "juego":"Halo Infinite", "precio":5999, "img":"img/juegos/halo-infinite.jpg"},
+    {"id":10, "juego":"Hitman 3", "precio":3999, "img":"img/juegos/hitman-3.jpg"},
+    {"id":11, "juego":"Forza Horizon 5", "precio":6999, "img":"img/juegos/horizon-5.jpg"},
+    {"id":12, "juego":"Assassins Creed: Valhalla", "precio":4999, "img":"img/juegos/valhalla.jpg"},
+    {"id":13, "juego":"NBA 2K23", "precio":6999, "img":"img/juegos/2k23.jpg"},
+    {"id":14, "juego":"Apex Legends", "precio":0, "img":"img/juegos/apex.jpg"},
+    {"id":15, "juego":"Fall Guys", "precio":0, "img":"img/juegos/fallguys.jpg"},
+    {"id":16, "juego":"Fortnite", "precio":0, "img":"img/juegos/fortnite.jpg"},
+    {"id":17, "juego":"Grand Theft Auto V", "precio":4999, "img":"img/juegos/gtav.jpg"},
+    {"id":18, "juego":"Overwatch 2", "precio":0, "img":"img/juegos/overwatch2.jpg"},
+    {"id":19, "juego":"Red Dead Redemption 2", "precio":5999, "img":"img/juegos/red-dead.jpg"},
+    {"id":20, "juego":"Sea of Thieves", "precio":4999, "img":"img/juegos/sea-of-thieves.jpg"}
+]

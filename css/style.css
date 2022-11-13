@@ -111,6 +111,9 @@ body {
   .header .contenedorNavCarrito .carrito2:hover {
     background-color: transparent;
   }
+  .header .contenedorNavCarrito .carrito2:hover h4 {
+    color: white;
+  }
   .cartaGradiente {
     cursor: pointer;
     position: relative;
@@ -217,7 +220,7 @@ body {
     background-color: transparent;
   }
   .carritoDiv .carrito:hover svg {
-    color: black;
+    color: white;
     transition: ease-in 0.3s;
     z-index: 1;
   }
@@ -894,6 +897,9 @@ body {
   .header .contenedorNavCarrito .carrito2:hover {
     background-color: transparent;
   }
+  .header .contenedorNavCarrito .carrito2:hover h4 {
+    color: white;
+  }
   .cartaGradiente {
     cursor: pointer;
     position: relative;
@@ -1000,7 +1006,7 @@ body {
     background-color: transparent;
   }
   .carritoDiv .carrito:hover svg {
-    color: black;
+    color: white;
     transition: ease-in 0.3s;
     z-index: 1;
   }
